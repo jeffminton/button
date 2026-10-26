@@ -55,6 +55,7 @@ class ezButton
 		int btnPin;
 		unsigned long debounceTime;
 		unsigned long count;
+		unsigned long duration;
 		int countMode;
 		int pressedState;     // the state when the button is considered pressed
 		int unpressedState;   // the state when the button is considered unpressed
@@ -76,7 +77,9 @@ class ezButton
 		void setCountMode(int mode);
 		unsigned long getCount(void);
 		void resetCount(void);
+		unsigned long getDuration(void);
 		void loop(void);
+		
 };
 
 #endif

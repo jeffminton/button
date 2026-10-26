@@ -99,6 +99,10 @@ void ezButton::resetCount(void) {
 	count = 0;
 }
 
+unsigned long long ezButton::getDuration(void){
+	return duration;
+}
+
 void ezButton::loop(void) {
 	// read the state of the switch/button:
 	int currentState = digitalRead(btnPin);
@@ -114,6 +118,8 @@ void ezButton::loop(void) {
 		lastDebounceTime = currentTime;
 		// save the the last flickerable state
 		lastFlickerableState = currentState;
+		// reset duration
+		duration = 0;
 	}
 
 	if ((currentTime - lastDebounceTime) >= debounceTime) {
@@ -123,6 +129,9 @@ void ezButton::loop(void) {
 		// save the the steady state
 		previousSteadyState = lastSteadyState;
 		lastSteadyState = currentState;
+
+		// update duration
+		duration = currentTime - lastDebounceTime;
 	}
 
 	if(previousSteadyState != lastSteadyState){
