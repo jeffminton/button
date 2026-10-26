@@ -99,7 +99,7 @@ void ezButton::resetCount(void) {
 	count = 0;
 }
 
-unsigned long long ezButton::getDuration(void){
+unsigned long ezButton::getDuration(void){
 	return duration;
 }
 
