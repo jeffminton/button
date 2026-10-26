@@ -73,6 +73,7 @@ class ezButton
 		int getState(void);
 		int getStateRaw(void);
 		bool isPressed(void);
+		unsigned long heldDuration(void);
 		bool isReleased(void);
 		void setCountMode(int mode);
 		unsigned long getCount(void);

@@ -80,6 +80,14 @@ bool ezButton::isPressed(void) {
 		return false;
 }
 
+unsigned long ezButton::heldDuration(void){
+	if(isPressed == true) {
+		return duration;
+	} else {
+		return (unsigned long)0;
+	}
+}
+
 bool ezButton::isReleased(void) {
 	if(previousSteadyState == pressedState && lastSteadyState == unpressedState)
 		return true;
