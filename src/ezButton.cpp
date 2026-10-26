@@ -81,7 +81,7 @@ bool ezButton::isPressed(void) {
 }
 
 unsigned long ezButton::heldDuration(void){
-	if(isPressed == true) {
+	if(isPressed() == true) {
 		return duration;
 	} else {
 		return (unsigned long)0;
