@@ -59,6 +59,7 @@ ezButton::ezButton(int pin, int mode) {
 	lastFlickerableState = previousSteadyState;
 
 	lastDebounceTime = 0;
+	duration = 0;
 }
 
 void ezButton::setDebounceTime(unsigned long time) {
