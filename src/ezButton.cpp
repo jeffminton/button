@@ -136,8 +136,10 @@ void ezButton::loop(void) {
 		// delay, so take it as the actual current state:
 
 		// save the the steady state
-		previousSteadyState = lastSteadyState;
-		lastSteadyState = currentState;
+		if( lastSteadyState != currentState) {
+			previousSteadyState = lastSteadyState;
+			lastSteadyState = currentState;
+		}
 
 		// update duration
 		duration = currentTime - lastDebounceTime;
