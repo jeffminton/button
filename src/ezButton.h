@@ -88,6 +88,7 @@ class ezButton
 		unsigned long getDuration(void);
 		void loop(void);
 		bool isMultipressComplete(void);
+		void resetMultipress(void);
 		void setMultipressTimeout(unsigned long timeout);
 		
 };

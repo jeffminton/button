@@ -124,6 +124,10 @@ void ezButton::setMultipressTimeout(unsigned long timeout){
 	multipressTimeout = timeout;
 }
 
+void ezButton::resetMultipress() {
+	multipressComplete = false;
+}
+
 void ezButton::loop(void) {
 	// read the state of the switch/button:
 	int currentState = digitalRead(btnPin);
