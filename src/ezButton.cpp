@@ -108,8 +108,20 @@ void ezButton::resetCount(void) {
 	count = 0;
 }
 
+void ezButton::resetDuration(void) {
+	duration = 0;
+}
+
 unsigned long ezButton::getDuration(void){
 	return duration;
+}
+
+bool ezButton::isMultipressComplete() {
+	return multipressComplete;
+}
+
+void ezButton::setMultipressTimeout(unsigned long timeout){
+	multipressTimeout = timeout;
 }
 
 void ezButton::loop(void) {
@@ -128,7 +140,7 @@ void ezButton::loop(void) {
 		// save the the last flickerable state
 		lastFlickerableState = currentState;
 		// reset duration
-		duration = 0;
+		
 	}
 
 	if ((currentTime - lastDebounceTime) >= debounceTime) {
@@ -139,10 +151,26 @@ void ezButton::loop(void) {
 		if( lastSteadyState != currentState) {
 			previousSteadyState = lastSteadyState;
 			lastSteadyState = currentState;
+
+			if(isPressed()) {
+				duration = 0;
+				// multipressComplete = false;
+			}
+		}
+
+		if(isReleased()) {
+			timeSinceLastRelease = currentTime - lastDebounceTime;
+
+			if(timeSinceLastRelease >= multipressTimeout) {
+				multipressComplete = true;
+			}
 		}
 
 		// update duration
-		duration = currentTime - lastDebounceTime;
+		if(isPressed()) {
+			duration = currentTime - lastDebounceTime;
+			multipressComplete = false;
+		}
 	}
 
 	if(previousSteadyState != lastSteadyState){

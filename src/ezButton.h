@@ -66,6 +66,12 @@ class ezButton
 
 		unsigned long lastDebounceTime; // the last time the output pin was toggled
 
+		unsigned long timeSinceLastRelease;
+
+		unsigned long multipressTimeout = 250;
+
+		bool multipressComplete;
+
 	public:
 		ezButton(int pin);
 		ezButton(int pin, int mode);
@@ -78,8 +84,11 @@ class ezButton
 		void setCountMode(int mode);
 		unsigned long getCount(void);
 		void resetCount(void);
+		void resetDuration(void);
 		unsigned long getDuration(void);
 		void loop(void);
+		bool isMultipressComplete(void);
+		void setMultipressTimeout(unsigned long timeout);
 		
 };
 
