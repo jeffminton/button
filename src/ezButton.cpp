@@ -160,6 +160,7 @@ void ezButton::loop(void) {
 			if(isPressed()) {
 				duration = 0;
 				// multipressComplete = false;
+				count++;
 			}
 		}
 
@@ -178,16 +179,16 @@ void ezButton::loop(void) {
 		}
 	}
 
-	if(previousSteadyState != lastSteadyState){
-		if(countMode == COUNT_BOTH)
-			count++;
-		else if(countMode == COUNT_FALLING){
-			if(previousSteadyState == HIGH && lastSteadyState == LOW)
-				count++;
-		}
-		else if(countMode == COUNT_RISING){
-			if(previousSteadyState == LOW && lastSteadyState == HIGH)
-				count++;
-		}
-	}
+	// if(previousSteadyState != lastSteadyState){
+	// 	if(countMode == COUNT_BOTH)
+	// 		count++;
+	// 	else if(countMode == COUNT_FALLING){
+	// 		if(previousSteadyState == HIGH && lastSteadyState == LOW)
+	// 			count++;
+	// 	}
+	// 	else if(countMode == COUNT_RISING){
+	// 		if(previousSteadyState == LOW && lastSteadyState == HIGH)
+	// 			count++;
+	// 	}
+	// }
 }
