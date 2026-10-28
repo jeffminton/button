@@ -126,6 +126,7 @@ void ezButton::setMultipressTimeout(unsigned long timeout){
 
 void ezButton::resetMultipress() {
 	multipressComplete = false;
+	resetCount();
 }
 
 void ezButton::loop(void) {
